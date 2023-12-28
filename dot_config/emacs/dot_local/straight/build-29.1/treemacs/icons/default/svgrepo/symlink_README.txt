@@ -1,0 +1,1 @@
+/home/roberto/.config/emacs/.local/straight/repos/treemacs/icons/default/svgrepo/README.txt

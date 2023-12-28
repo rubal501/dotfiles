@@ -1,0 +1,258 @@
+* 0.106790:*:cli:run!: doom doctor
+* 0.106948:*:cli:context-parse: found command (doom)
+* 0.107432:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/doctor.el
+* 0.107489:*:cli:load: ~/.config/emacs/lisp/cli/doctor.el nil
+* 0.111655:*:cli:context-parse: found command (doom doctor)
+* 0.112141:*:cli:context-execute: doom doctor
+* 0.112642:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25991 40667 414373 927000) 54530 0 (50 . 32) nil nil doom nil nil (doom doctor) nil (doctor) ((--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom doctor)) ((doom) doctor))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+* 0.112715:*:cli:execute: (doom doctor) nil
+The doctor will see you now...
+
+> Checking your Emacs version...
+> Checking for Doom's prerequisites...
+> Checking for Emacs config conflicts...
+> Checking for missing Emacs features...
+  ! Emacs was not built with native compilation support
+    Users will see a substantial performance gain by building Emacs with
+    native compilation support, availible in emacs 28+.You must install a
+    prebuilt Emacs binary with this included, or compile Emacs with the
+    --with-native-compilation option.
+> Checking for private config conflicts...
+> Checking for common environmental issues...
+> Checking for stale elc files...
+> Checking for problematic git global settings...
+> Checking Doom Emacs...
+  * 0.202987:*:cli:hook:doom-before-init-hook: run doom--begin-init-h
+  * 0.203074::context: +init (cli t)
+  * 0.203564:*:cli:init:load: ~/.config/doom/init t
+  * 0.204416:*:cli:init:load: ~/.config/emacs/.local/etc/@/init.29.el noerror
+  * 0.240468::context: +modules (init cli t)
+  * 0.240557:*:cli:init:modules::config:use-package:load: ~/.config/emacs/modules/config/use-package/init nil
+  * 0.241719:*:cli:init:modules::core:load: ~/.config/emacs/lisp/init nil
+  * 0.241920:*:cli:init:modules::core:load: doom-keybinds nil
+  * 0.270238:*:cli:init:modules::core:load: doom-ui nil
+  * 0.280916:*:cli:init:modules::core:load: doom-projects nil
+  * 0.289587:*:cli:init:modules::core:load: doom-editor nil
+  * 0.302436:*:cli:init:modules::editor:evil:load: ~/.config/emacs/modules/editor/evil/init nil
+  * 0.303908:*:cli:init:modules:hook:doom-after-modules-init-hook: run general-auto-unbind-keys
+  * 0.303979:*:cli:init:modules::completion:company:load: ~/.config/emacs/modules/completion/company/config nil
+  * 0.305604:*:cli:init:modules::completion:vertico:load: ~/.config/emacs/modules/completion/vertico/config nil
+  * 0.327897:*:cli:init:modules::ui:doom:load: ~/.config/emacs/modules/ui/doom/config nil
+  * 0.328430:*:cli:init:modules::ui:doom-dashboard:load: ~/.config/emacs/modules/ui/doom-dashboard/config nil
+  * 0.337397:*:cli:init:modules::ui:doom-quit:load: ~/.config/emacs/modules/ui/doom-quit/config nil
+  * 0.337740:*:cli:init:modules::ui:hl-todo:load: ~/.config/emacs/modules/ui/hl-todo/config nil
+  * 0.338586:*:cli:init:modules::ui:modeline:load: ~/.config/emacs/modules/ui/modeline/config nil
+  * 0.339603:*:cli:init:modules::ui:ophints:load: ~/.config/emacs/modules/ui/ophints/config nil
+  * 0.340265:*:cli:init:modules::ui:popup:load: ~/.config/emacs/modules/ui/popup/config nil
+  * 0.343343:*:cli:init:modules::ui:popup:load: ~/.config/emacs/modules/ui/popup/+hacks nil
+  * 0.348717:*:cli:init:modules::ui:treemacs:load: ~/.config/emacs/modules/ui/treemacs/config nil
+  * 0.349756:*:cli:init:modules::ui:vc-gutter:load: ~/.config/emacs/modules/ui/vc-gutter/config nil
+  * 0.351823:*:cli:init:modules::ui:workspaces:load: ~/.config/emacs/modules/ui/workspaces/config nil
+  * 0.353905:*:cli:init:modules::ui:zen:load: ~/.config/emacs/modules/ui/zen/config nil
+  * 0.354601:*:cli:init:modules::editor:evil:load: ~/.config/emacs/modules/editor/evil/config nil
+  * 0.487313:*:cli:init:modules::editor:file-templates:load: ~/.config/emacs/modules/editor/file-templates/config nil
+  * 0.487959:*:cli:init:modules::editor:fold:load: ~/.config/emacs/modules/editor/fold/config nil
+  * 0.490953:*:cli:init:modules::editor:format:load: ~/.config/emacs/modules/editor/format/config nil
+  * 0.491568:*:cli:init:modules::editor:snippets:load: ~/.config/emacs/modules/editor/snippets/config nil
+  * 0.492758:*:cli:init:modules::emacs:dired:load: ~/.config/emacs/modules/emacs/dired/config nil
+  * 0.495260:*:cli:init:modules::emacs:electric:load: ~/.config/emacs/modules/emacs/electric/config nil
+  * 0.495624:*:cli:init:modules::emacs:undo:load: ~/.config/emacs/modules/emacs/undo/config nil
+  * 0.497372:*:cli:init:modules::emacs:vc:load: ~/.config/emacs/modules/emacs/vc/config nil
+  * 0.498716:*:cli:init:modules::term:vterm:load: ~/.config/emacs/modules/term/vterm/config nil
+  * 0.499327:*:cli:init:modules::checkers:syntax:load: ~/.config/emacs/modules/checkers/syntax/config nil
+  * 0.500701:*:cli:init:modules::checkers:spell:load: ~/.config/emacs/modules/checkers/spell/config nil
+  * 0.502371:*:cli:init:modules::tools:eval:load: ~/.config/emacs/modules/tools/eval/config nil
+  * 0.503448:*:cli:init:modules::tools:lookup:load: ~/.config/emacs/modules/tools/lookup/config nil
+  * 0.504769:*:cli:init:modules::tools:magit:load: ~/.config/emacs/modules/tools/magit/config nil
+  * 0.507528:*:cli:init:modules::lang:emacs-lisp:load: ~/.config/emacs/modules/lang/emacs-lisp/config nil
+  * 0.510585:*:cli:init:modules::lang:latex:load: ~/.config/emacs/modules/lang/latex/config nil
+  * 0.512991:*:cli:init:modules::lang:latex:load: ~/.config/emacs/modules/lang/latex/+ref nil
+  * 0.513529:*:cli:init:modules::lang:markdown:load: ~/.config/emacs/modules/lang/markdown/config nil
+  * 0.514487:*:cli:init:modules::lang:org:load: ~/.config/emacs/modules/lang/org/config nil
+  * 0.547725:*:cli:init:modules::lang:sh:load: ~/.config/emacs/modules/lang/sh/config nil
+  * 0.548763:*:cli:init:modules::config:default:load: ~/.config/emacs/modules/config/default/config nil
+  * 0.551609:*:cli:init:modules::config:default:load: ~/.config/emacs/modules/config/default/+evil nil
+  * 0.551920:*:cli:init:modules::config:default:load: ~/.config/emacs/modules/config/default/+evil-bindings nil
+  * 0.554708:*:cli:init:modules:hook:doom-after-modules-config-hook: run evil-mode
+  * 0.563219:*:cli:init:modules:hook:doom-after-modules-config-hook: run +evil-update-cursor-color-h
+  * 0.563304:*:cli:init:modules:hook:doom-after-modules-config-hook: run +evil--init-popup-rules-h
+  * 0.563390:*:cli:init:modules::user:load: ~/.config/doom/config nil
+  * 0.563758:*:cli:init:modules:load: ~/.config/doom/custom.el noerror
+  * 0.564245:*:cli:init:Initializing straight
+  * 0.564346::context: +packages (init cli t)
+  * 0.564393::context:module: =[0 -110 -110 :core nil nil nil]
+  * 0.645607:*:cli:init:Initializing straight
+  * 0.645725::context: +packages (init cli t)
+  * 0.645777::context:module: =[0 -110 -110 :core nil nil nil]
+  * 0.657573:*:cli:init:Initializing recipes
+  * 0.661648:*:cli:init:Installing core packages
+  * 0.661708:*:cli:init:Initializing package.el
+  * 0.795669:*:cli:init:Initializing straight.el
+  * 0.795992::context: +packages (init cli t)
+  * 0.796051::context:module: =[1 105 -105 :user nil nil nil]
+  * 0.796301::context:module: =[2 -111 -111 :config use-package nil nil]
+  * 0.797018::context:module: =[0 -110 -110 :core nil nil nil]
+  * 0.809211::context:module: =[1 105 -105 :user nil nil nil]
+  * 0.809511::context:module: =[3 0 0 :completion company nil nil]
+  * 0.810949::context:module: =[4 0 0 :completion vertico nil nil]
+  * 0.815898::context:module: =[5 0 0 :ui doom nil nil]
+  * 0.817006::context:module: =[6 0 0 :ui doom-dashboard nil nil]
+  * 0.817071::context:module: =[7 0 0 :ui doom-quit nil nil]
+  * 0.817126::context:module: =[8 0 0 :ui hl-todo nil nil]
+  * 0.817778::context:module: =[9 0 0 :ui modeline nil nil]
+  * 0.819634::context:module: =[10 0 0 :ui ophints nil nil]
+  * 0.820590::context:module: =[11 0 0 :ui popup (+defaults) nil]
+  * 0.820658::context:module: =[12 0 0 :ui treemacs nil nil]
+  * 0.823910::context:module: =[13 0 0 :ui vc-gutter (+pretty) nil]
+  * 0.824894::context:module: =[14 0 0 :ui vi-tilde-fringe nil nil]
+  * 0.825572::context:module: =[15 0 0 :ui workspaces nil nil]
+  * 0.826226::context:module: =[16 0 0 :ui zen nil nil]
+  * 0.827311::context:module: =[17 0 0 :editor evil (+everywhere) nil]
+  * 0.835996::context:module: =[18 0 0 :editor file-templates nil nil]
+  * 0.836708::context:module: =[19 0 0 :editor fold nil nil]
+  * 0.838642::context:module: =[20 0 0 :editor format (+onsave) nil]
+  * 0.839300::context:module: =[21 0 0 :editor snippets nil nil]
+  * 0.840875::context:module: =[22 0 0 :emacs dired nil nil]
+  * 0.843808::context:module: =[23 0 0 :emacs electric nil nil]
+  * 0.843882::context:module: =[24 0 0 :emacs undo nil nil]
+  * 0.845711::context:module: =[25 0 0 :emacs vc nil nil]
+  * 0.849079::context:module: =[26 0 0 :term vterm nil nil]
+  * 0.851337::context:module: =[27 0 0 :checkers syntax nil nil]
+  * 0.853406::context:module: =[28 0 0 :checkers spell (+flyspell) nil]
+  * 0.855717::context:module: =[29 0 0 :tools eval (+overlay) nil]
+  * 0.856828::context:module: =[30 0 0 :tools lookup nil nil]
+  * 0.861371::context:module: =[31 0 0 :tools magit nil nil]
+  * 0.863460::context:module: =[32 0 0 :lang emacs-lisp nil nil]
+  * 0.867731::context:module: =[33 0 0 :lang latex nil nil]
+  * 0.871704::context:module: =[34 0 0 :lang markdown nil nil]
+  * 0.874052::context:module: =[35 0 0 :lang org nil nil]
+  * 0.891214::context:module: =[36 0 0 :lang sh nil nil]
+  * 0.892580::context:module: =[37 0 0 :config default (+bindings +smartparens) nil]
+  * 0.894452::context:module: =[1 105 -105 :user nil nil nil]
+  * 1.003339:*:cli:init:Initializing recipes
+  * 1.018247:*:cli:init:Installing core packages
+  ✓ Initialized Doom Emacs 3.0.0-pre
+  ✓ Detected 38 modules
+  ✓ Detected 135 packages
+  > Checking Doom core for irregularities...
+    Found font NFM.ttf
+  > Checking for stale elc files in your DOOMDIR...
+  > Checking your enabled modules...
+  * 1.224244::context: +doctor (init cli t)
+  * 1.224368::context:module: =[2 -111 -111 :config use-package nil nil]
+  * 1.224447::context: +packages (doctor init cli t)
+  * 1.234215::context: +doctor (init cli t)
+  * 1.234311::context:module: =[0 -110 -110 :core nil nil nil]
+  * 1.234377::context: +packages (doctor init cli t)
+  * 1.372639::context: +doctor (init cli t)
+  * 1.372765::context:module: =[1 105 -105 :user nil nil nil]
+  * 1.372823::context: +packages (doctor init cli t)
+  * 1.373244::context: +doctor (init cli t)
+  * 1.373294::context:module: =[3 0 0 :completion company nil nil]
+  * 1.373364::context: +packages (doctor init cli t)
+  * 1.386162::context: +doctor (init cli t)
+  * 1.386270::context:module: =[4 0 0 :completion vertico nil nil]
+  * 1.386328::context: +packages (doctor init cli t)
+  * 1.493756::context: +doctor (init cli t)
+  * 1.493904::context:module: =[5 0 0 :ui doom nil nil]
+  * 1.493981::context: +packages (doctor init cli t)
+  * 1.508196::context: +doctor (init cli t)
+  * 1.508291::context:module: =[6 0 0 :ui doom-dashboard nil nil]
+  * 1.508359::context: +packages (doctor init cli t)
+  * 1.508482::context: +doctor (init cli t)
+  * 1.508524::context:module: =[7 0 0 :ui doom-quit nil nil]
+  * 1.508568::context: +packages (doctor init cli t)
+  * 1.508694::context: +doctor (init cli t)
+  * 1.508745::context:module: =[8 0 0 :ui hl-todo nil nil]
+  * 1.508785::context: +packages (doctor init cli t)
+  * 1.514631::context: +doctor (init cli t)
+  * 1.514685::context:module: =[9 0 0 :ui modeline nil nil]
+  * 1.514729::context: +packages (doctor init cli t)
+  * 1.531161::context: +doctor (init cli t)
+  * 1.531269::context:module: =[10 0 0 :ui ophints nil nil]
+  * 1.531331::context: +packages (doctor init cli t)
+  * 1.537469::context: +doctor (init cli t)
+  * 1.537533::context:module: =[11 0 0 :ui popup (+defaults) nil]
+  * 1.537583::context: +packages (doctor init cli t)
+  * 1.537720::context: +doctor (init cli t)
+  * 1.537763::context:module: =[12 0 0 :ui treemacs nil nil]
+  * 1.537805::context: +packages (doctor init cli t)
+  * 1.570462::context: +doctor (init cli t)
+  * 1.570561::context:module: =[13 0 0 :ui vc-gutter (+pretty) nil]
+  * 1.570614::context: +packages (doctor init cli t)
+  * 1.576373::context: +doctor (init cli t)
+  * 1.576442::context:module: =[14 0 0 :ui vi-tilde-fringe nil nil]
+  * 1.576511::context: +packages (doctor init cli t)
+  * 1.582521::context: +doctor (init cli t)
+  * 1.582605::context:module: =[15 0 0 :ui workspaces nil nil]
+  * 1.582658::context: +packages (doctor init cli t)
+  * 1.588386::context: +doctor (init cli t)
+  * 1.588499::context:module: =[16 0 0 :ui zen nil nil]
+  * 1.588568::context: +packages (doctor init cli t)
+  * 1.599177::context: +doctor (init cli t)
+  * 1.599263::context:module: =[17 0 0 :editor evil (+everywhere) nil]
+  * 1.599314::context: +packages (doctor init cli t)
+  * 1.685602::context: +doctor (init cli t)
+  * 1.685715::context:module: =[18 0 0 :editor file-templates nil nil]
+  * 1.685785::context: +packages (doctor init cli t)
+  * 1.690387::context: +doctor (init cli t)
+  * 1.690450::context:module: =[19 0 0 :editor fold nil nil]
+  * 1.690498::context: +packages (doctor init cli t)
+  * 1.699797::context: +doctor (init cli t)
+  * 1.699873::context:module: =[20 0 0 :editor format (+onsave) nil]
+  * 1.699926::context: +packages (doctor init cli t)
+  * 1.704255::context: +doctor (init cli t)
+  * 1.704308::context:module: =[21 0 0 :editor snippets nil nil]
+  * 1.704354::context: +packages (doctor init cli t)
+  * 1.717848::context: +doctor (init cli t)
+  * 1.717954::context:module: =[22 0 0 :emacs dired nil nil]
+  * 1.718018::context: +packages (doctor init cli t)
+  * 1.736042::context: +doctor (init cli t)
+  * 1.736129::context:module: =[23 0 0 :emacs electric nil nil]
+  * 1.736184::context: +packages (doctor init cli t)
+  * 1.736331::context: +doctor (init cli t)
+  * 1.736380::context:module: =[24 0 0 :emacs undo nil nil]
+  * 1.736424::context: +packages (doctor init cli t)
+  * 1.748631::context: +doctor (init cli t)
+  * 1.748742::context:module: =[25 0 0 :emacs vc nil nil]
+  * 1.748794::context: +packages (doctor init cli t)
+  * 1.765711::context: +doctor (init cli t)
+  * 1.765822::context:module: =[26 0 0 :term vterm nil nil]
+  * 1.765894::context: +packages (doctor init cli t)
+  * 1.771824::context: +doctor (init cli t)
+  * 1.771903::context:module: =[27 0 0 :checkers syntax nil nil]
+  * 1.771956::context: +packages (doctor init cli t)
+  * 1.780550::context: +doctor (init cli t)
+  * 1.780649::context:module: =[28 0 0 :checkers spell (+flyspell) nil]
+  * 1.780702::context: +packages (doctor init cli t)
+  * 1.789543::context: +doctor (init cli t)
+  * 1.789621::context:module: =[29 0 0 :tools eval (+overlay) nil]
+  * 1.789671::context: +packages (doctor init cli t)
+  * 1.796931::context: +doctor (init cli t)
+  * 1.797023::context:module: =[30 0 0 :tools lookup nil nil]
+  * 1.797072::context: +packages (doctor init cli t)
+  * 1.807784::context: +doctor (init cli t)
+  * 1.807859::context:module: =[31 0 0 :tools magit nil nil]
+  * 1.807909::context: +packages (doctor init cli t)
+  * 1.815593::context: +doctor (init cli t)
+  * 1.815671::context:module: =[32 0 0 :lang emacs-lisp nil nil]
+  * 1.815725::context: +packages (doctor init cli t)
+  * 1.839922::context: +doctor (init cli t)
+  * 1.840027::context:module: =[33 0 0 :lang latex nil nil]
+  * 1.840078::context: +packages (doctor init cli t)
+  * 1.860091::context: +doctor (init cli t)
+  * 1.860198::context:module: =[34 0 0 :lang markdown nil nil]
+  * 1.860256::context: +packages (doctor init cli t)
+  * 1.951975::context: +doctor (init cli t)
+  * 1.952066::context:module: =[35 0 0 :lang org nil nil]
+  * 1.952122::context: +packages (doctor init cli t)
+  * 1.986531::context: +doctor (init cli t)
+  * 1.986619::context:module: =[36 0 0 :lang sh nil nil]
+  * 1.986672::context: +packages (doctor init cli t)
+  * 1.989898::context: +doctor (init cli t)
+  * 1.989953::context:module: =[37 0 0 :config default (+bindings +smartparens) nil]
+  * 1.990002::context: +packages (doctor init cli t)
+
+There is 1 warning!
+* 1.997106:*:cli:init:Finished (GCs: 0, elapsed: 0.000000s)
+* 1.997106:*:cli:init:Finished (GCs: 0, elapsed: 0.000000s)

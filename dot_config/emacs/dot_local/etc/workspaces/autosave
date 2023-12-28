@@ -1,0 +1,45 @@
+;; -*- mode: emacs-lisp; eval: (progn (pp-buffer) (indent-buffer)) -*-
+((def-persp "main"
+            ((def-buffer "init.el" "/home/roberto/.config/doom/init.el" emacs-lisp-mode))
+            (def-wconf
+             (((min-height . 4)
+               (min-width . 10)
+               (min-height-ignore . 3)
+               (min-width-ignore . 3)
+               (min-height-safe . 1)
+               (min-width-safe . 2)
+               (min-pixel-height . 140)
+               (min-pixel-width . 160)
+               (min-pixel-height-ignore . 105)
+               (min-pixel-width-ignore . 48)
+               (min-pixel-height-safe . 35)
+               (min-pixel-width-safe . 32))
+              leaf
+              (pixel-width . 2138)
+              (pixel-height . 1357)
+              (total-width . 133)
+              (total-height . 38)
+              (normal-height . 1.0)
+              (normal-width . 1.0)
+              (parameters
+               (better-jumper-struct . #s(better-jumper-jump-list-struct
+                                          (0 2 .
+                                             [("/home/roberto/.config/doom/init.el" 1 "u0u2pe")
+                                              ("/home/roberto/.config/doom/init.el" 9005 "azmw6u")
+                                              nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil])
+                                          -1)))
+              (buffer "init.el"
+                      (selected . t)
+                      (hscroll . 0)
+                      (fringes 8 8 t nil)
+                      (margins nil)
+                      (scroll-bars nil 0 t nil 0 t nil)
+                      (vscroll . 0)
+                      (dedicated)
+                      (point . 7440)
+                      (start . 6413))
+              (prev-buffers
+               ("*doom*" 1537 1)
+               ("*scratch*" 1 1))))
+            (def-params nil)
+            nil nil nil))

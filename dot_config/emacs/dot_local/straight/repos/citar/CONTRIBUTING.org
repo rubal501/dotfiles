@@ -1,0 +1,73 @@
+* Contributing
+  :PROPERTIES:
+  :CUSTOM_ID: contributing
+  :END:
+
+If you would like to contribute, details:
+
+- For more significant potential changes, file an issue first to get feedback on the basic idea.
+- If you do submit a PR, follow the [[https://github.com/bbatsov/emacs-lisp-style-guide][elisp style guide]], and [[https://cbea.ms/git-commit/][these suggestions]] on git commit messages.
+- For working on lists and such, we primarily use the =seq= functions, and occassionally ~dolist~.
+
+** Basic Architecture
+
+Citar uses a cache, which stores two hash tables for each bibliography file:
+
+- entries ::  as returned by =parsebib-parse=, keys are citekeys, values are alists of entry fields
+- pre-formatted :: values are partially-formatted completion strings
+
+The =citar--ref-completion-table= function returns a hash table from the bibliographic cache, and ~citar--get-entry~ and ~-citar--get-value~ provide access to those data.
+Most user-accessible citar functions take an argument ~key~ or ~keys~.
+Some functions also take an ~entry~ argument, and ~citar--get-value~ takes either.
+When using these functions, you should keep in mind that unless you pass an entry alist to ~citar--get-value~, and instead use a key, each call to that function will query the cache.
+This, therefore, is a better pattern to use:
+
+#+begin_src emacs-lisp
+
+(let* ((entry (citar--get-entry key))
+       (title (citar--get-value entry "title")))
+  (message title))
+
+#+end_src
+
+
+** Extending citar
+
+You can use ~citar-select-ref~ or ~citar-select-refs~ to write custom commands.
+An example:
+
+#+begin_src emacs-lisp
+
+
+(defun my/citar-insert-annots (keys)
+  "insert annotations as org text from KEYS-ENTRIES"
+  (interactive (list (citar-select-refs)))
+  (let* ((files
+          (seq-mapcat (lambda (key)
+                        (citar-file--files-for-entry
+                         key (citar--get-entry key)
+                         '("/") '("pdf")))
+                      keys ))
+         (output (seq-map
+                  (lambda (file)
+                    (pdf-annot-markups-as-org-text ;; you'll still need to write this function!
+                     file)
+                  files)))
+    (save-excursion
+      (org-forward-element)
+      (-each output (lambda (out)
+                      (insert (format "\n%s\n" out))))
+      output)))
+
+
+  (defun my/independent-insert-annots (key)
+    "helper function to insert annotations without the bibtex-actins apparatus"
+    (my/citar-insert-annots (list key)))
+
+
+#+end_src
+
+Then bind the first function to the appropriate keymap, e.g., 
+#+begin_src emacs-lisp
+(define-key oc-citar-map (kbd "a") '("insert file annotations" . my/citar-insert-annots))
+#+end_src

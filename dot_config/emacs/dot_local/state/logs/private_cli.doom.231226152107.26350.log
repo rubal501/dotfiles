@@ -1,0 +1,119 @@
+* 0.109217:*:cli:run!: doom sync
+* 0.109373:*:cli:context-parse: found command (doom)
+* 0.109870:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/sync.el
+* 0.109939:*:cli:load: ~/.config/emacs/lisp/cli/sync.el nil
+* 0.110177:*:cli:load: ~/.config/emacs/lisp/cli/packages nil
+* 0.140712:*:cli:context-parse: found command (doom sync)
+* 0.141321:*:cli:context-execute: doom sync
+* 0.141948:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25995 17347 157431 328000) 26350 0 (101 . 32) nil nil doom nil nil (doom sync) nil (sync) ((--jobs) (-j) (-p) (-u) (-c) (-e) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom sync)) ((doom) sync))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+* 0.142024:*:cli:execute: (:before doom build) nil
+* 0.142078:*:cli:Initializing straight
+* 0.142152::context: +packages (cli t)
+* 0.142188::context:module: =[0 -110 -110 :core nil nil nil]
+* 0.195613:*:cli:Initializing recipes
+* 0.205480:*:cli:Installing core packages
+* 0.205551:*:cli:execute: (doom sync) ((jobs) (purge?) (update?) (noelc?) (noenvvar?))
+* 0.205797:*:cli:call: (doom sync) -> (doom profiles sync --reload)
+* 0.205940:*:cli:context-parse: found command (doom)
+* 0.206359:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/profiles.el
+* 0.206416:*:cli:load: ~/.config/emacs/lisp/cli/profiles.el nil
+* 0.213635:*:cli:context-parse: found command (doom profiles)
+* 0.214143:*:cli:context-parse: found command (doom profiles sync)
+* 0.214632:*:cli:context-parse: found switch "--reload"
+* 0.215322:*:cli:context-execute: doom profiles sync
+* 0.215895:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25995 17347 157431 328000) 26350 0 (101 . 32) nil nil doom nil nil (doom profiles sync) nil (sync) ((--reload . --reload) (--jobs) (-j) (-p) (-u) (-c) (-e) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom profiles sync) --reload) ((doom profiles) sync --reload) ((doom) profiles sync --reload))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+* 0.215974:*:cli:execute: (doom profiles sync) ((reload? . --reload))
+  * 0.216447:*:cli:Profiles are up-to-date!
+> Synchronizing "default" profile...
+  * 0.217150:*:cli:call: (doom profiles sync) -> (doom env)
+  * 0.217277:*:cli:context-parse: found command (doom)
+  * 0.217693:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/env.el
+  * 0.217745:*:cli:load: ~/.config/emacs/lisp/cli/env.el nil
+  * 0.220973:*:cli:context-parse: found command (doom env)
+  * 0.221578:*:cli:context-execute: doom env
+  * 0.222122:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25995 17347 157431 328000) 26350 0 (101 . 32) nil nil doom nil nil (doom env) nil (sync) ((--deny) (-d) (--allow) (-a) (-o) (--deny-all) (--allow-all) (--reload . --reload) (--jobs) (-j) (-p) (-u) (-c) (-e) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom env)) ((doom) env))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+  * 0.222208:*:cli:execute: (doom env) ((rules) (output-file) (deny-only) (allow-only))
+  > Regenerating envvars file
+    * 0.223047:*:cli:cli:env: deny DBUS_SESSION_BUS_ADDRESS
+    * 0.223297:*:cli:cli:env: deny XDG_RUNTIME_DIR
+    * 0.223420:*:cli:cli:env: deny XDG_VTNR
+    * 0.223475:*:cli:cli:env: deny SHLVL
+    * 0.223533:*:cli:cli:env: deny DISPLAY
+    * 0.223599:*:cli:cli:env: deny USER
+    * 0.223667:*:cli:cli:env: deny __DOOMPID
+    * 0.223726:*:cli:cli:env: deny TERM
+    * 0.223804:*:cli:cli:env: deny XDG_SESSION_CLASS
+    * 0.223952:*:cli:cli:env: deny XDG_SEAT_PATH
+    * 0.224070:*:cli:cli:env: deny __DOOMGPIPE
+    * 0.224167:*:cli:cli:env: deny HOME
+    * 0.224327:*:cli:cli:env: deny XAUTHORITY
+    * 0.224397:*:cli:cli:env: deny XDG_SESSION_TYPE
+    * 0.224562:*:cli:cli:env: deny PWD
+    * 0.224669:*:cli:cli:env: deny XDG_SEAT
+    * 0.224792:*:cli:cli:env: deny __DOOMSTEP
+    * 0.224879:*:cli:cli:env: deny __DOOMGEOM
+    * 0.225026:*:cli:cli:env: deny __DOOMPIPE
+    ✓ Generated ~/.config/emacs/.local/env
+  * 0.226388:*:cli:Initializing package.el
+  * 0.251775:*:cli:Initializing straight.el
+  * 0.252116::context: +packages (cli t)
+  * 0.252164::context:module: =[1 105 -105 :user nil nil nil]
+  * 0.252410::context:module: =[2 -111 -111 :config use-package nil nil]
+  * 0.253160::context:module: =[0 -110 -110 :core nil nil nil]
+  * 0.265318::context:module: =[1 105 -105 :user nil nil nil]
+  * 0.265591::context:module: =[3 0 0 :completion company nil nil]
+  * 0.267030::context:module: =[4 0 0 :completion vertico nil nil]
+  * 0.271960::context:module: =[5 0 0 :ui doom nil nil]
+  * 0.273172::context:module: =[6 0 0 :ui doom-dashboard nil nil]
+  * 0.273237::context:module: =[7 0 0 :ui doom-quit nil nil]
+  * 0.273285::context:module: =[8 0 0 :ui emoji (+unicode) nil]
+  * 0.274043::context:module: =[9 0 0 :ui hl-todo nil nil]
+  * 0.274799::context:module: =[10 0 0 :ui modeline nil nil]
+  * 0.276465::context:module: =[11 0 0 :ui ophints nil nil]
+  * 0.277475::context:module: =[12 0 0 :ui popup (+defaults) nil]
+  * 0.277533::context:module: =[13 0 0 :ui tabs nil nil]
+  * 0.278230::context:module: =[14 0 0 :ui treemacs nil nil]
+  * 0.282191::context:module: =[15 0 0 :ui vc-gutter (+pretty) nil]
+  * 0.283458::context:module: =[16 0 0 :ui vi-tilde-fringe nil nil]
+  * 0.284162::context:module: =[17 0 0 :ui workspaces nil nil]
+  * 0.284842::context:module: =[18 0 0 :ui zen nil nil]
+  * 0.285981::context:module: =[19 0 0 :editor evil (+everywhere) nil]
+  * 0.295395::context:module: =[20 0 0 :editor file-templates nil nil]
+  * 0.296107::context:module: =[21 0 0 :editor fold nil nil]
+  * 0.298021::context:module: =[22 0 0 :editor format (+onsave) nil]
+  * 0.298665::context:module: =[23 0 0 :editor snippets nil nil]
+  * 0.300203::context:module: =[24 0 0 :emacs dired nil nil]
+  * 0.303211::context:module: =[25 0 0 :emacs electric nil nil]
+  * 0.303281::context:module: =[26 0 0 :emacs undo nil nil]
+  * 0.305138::context:module: =[27 0 0 :emacs vc nil nil]
+  * 0.308506::context:module: =[28 0 0 :term vterm nil nil]
+  * 0.310841::context:module: =[29 0 0 :checkers syntax nil nil]
+  * 0.312897::context:module: =[30 0 0 :checkers spell (+flyspell) nil]
+  * 0.315232::context:module: =[31 0 0 :tools eval (+overlay) nil]
+  * 0.316353::context:module: =[32 0 0 :tools lookup nil nil]
+  * 0.320922::context:module: =[33 0 0 :tools magit nil nil]
+  * 0.322982::context:module: =[34 0 0 :lang emacs-lisp nil nil]
+  * 0.327277::context:module: =[35 0 0 :lang julia nil nil]
+  * 0.329324::context:module: =[36 0 0 :lang latex (+latexmk +cdlatex) nil]
+  * 0.333648::context:module: =[37 0 0 :lang markdown nil nil]
+  * 0.335999::context:module: =[38 0 0 :lang org nil nil]
+  * 0.353506::context:module: =[39 0 0 :lang sh nil nil]
+  * 0.354880::context:module: =[40 0 0 :config default (+bindings +smartparens) nil]
+  * 0.356733::context:module: =[1 105 -105 :user nil nil nil]
+  > Installing packages...
+    - No packages need to be installed
+  > (Re)building packages...
+    - No packages need rebuilding
+  > Purging orphaned packages (for the emperor)...
+    - Skipping builds
+    - Skipping elpa packages
+    - Skipping repos
+    - Skipping regrafting
+  > (Re)building profile in /home/roberto/.config/emacs/.local/etc/@/...
+    > Deleting old init files...
+    > Generating 4 init files...
+    > Byte-compiling ~/.config/emacs/.local/etc/@init.29.el...
+    ✓ Built init.29.elc
+  - Restart Emacs or use 'M-x doom/reload' for changes to take effect
+* 1.343350:*:cli:Finished (GCs: 0, elapsed: 0.000000s)
+* 1.343350:*:cli:Finished (GCs: 0, elapsed: 0.000000s)

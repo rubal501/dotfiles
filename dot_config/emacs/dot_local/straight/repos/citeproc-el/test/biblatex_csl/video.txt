@@ -1,0 +1,12 @@
+---
+@video{x1,title={Blah}}
+@movie{x2,title={Blah}}
+---
+- blt-type: video
+  id: x1
+  title: Blah
+  type: motion_picture
+- blt-type: movie
+  id: x2
+  title: Blah
+  type: motion_picture

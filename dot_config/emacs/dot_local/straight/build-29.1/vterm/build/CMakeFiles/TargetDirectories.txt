@@ -1,0 +1,4 @@
+/home/roberto/.config/emacs/.local/straight/build-29.1/vterm/build/CMakeFiles/vterm-module.dir
+/home/roberto/.config/emacs/.local/straight/build-29.1/vterm/build/CMakeFiles/run.dir
+/home/roberto/.config/emacs/.local/straight/build-29.1/vterm/build/CMakeFiles/edit_cache.dir
+/home/roberto/.config/emacs/.local/straight/build-29.1/vterm/build/CMakeFiles/rebuild_cache.dir

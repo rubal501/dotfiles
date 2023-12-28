@@ -1,0 +1,46 @@
+﻿The doctor will see you now...
+
+> Checking your Emacs version...
+> Checking for Doom's prerequisites...
+> Checking for Emacs config conflicts...
+> Checking for missing Emacs features...
+  [033m! Emacs was not built with native compilation support[0m
+    Users will see a substantial performance gain by building Emacs with
+    native compilation support, availible in emacs 28+.You must install a
+    prebuilt Emacs binary with this included, or compile Emacs with the
+    --with-native-compilation option.
+> Checking for private config conflicts...
+> Checking for common environmental issues...
+[033m! Detected Fish as your $SHELL[0m
+  Fish (and possibly other non-POSIX shells) is known to inject garbage
+  output into some of the child processes that Emacs spawns. Many Emacs
+  packages/utilities will choke on this output, causing unpredictable
+  issues. To get around this, either:
+  
+    - Add the following to $DOOMDIR/config.el:
+  
+      (setq shell-file-name (executable-find "bash"))
+  
+    - Or change your default shell to a POSIX shell (like bash or zsh)
+      and explicitly configure your terminal apps to use the shell you
+      want.
+  
+  If you opt for option 1 and use one of Emacs' terminal emulators, you
+  will also need to configure them to use Fish, e.g.
+  
+    (setq-default vterm-shell (executable-find "fish"))
+  
+    (setq-default explicit-shell-file-name (executable-find "fish"))
+  
+> Checking for stale elc files...
+> Checking for problematic git global settings...
+> Checking Doom Emacs...
+  [032m✓ Initialized Doom Emacs 3.0.0-pre[0m
+  [032m✓ Detected 38 modules[0m
+  [032m✓ Detected 135 packages[0m
+  > Checking Doom core for irregularities...
+    [032mFound font NFM.ttf[0m
+  > Checking for stale elc files in your DOOMDIR...
+  > Checking your enabled modules...
+
+[033mThere is 1 warning![0m

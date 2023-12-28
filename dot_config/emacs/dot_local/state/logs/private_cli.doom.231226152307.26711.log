@@ -1,0 +1,55 @@
+* 0.107661:*:cli:run!: doom Documents/
+* 0.107819:*:cli:context-parse: found command (doom)
+* 0.108292:*:cli:context-parse: found arg "Documents/"
+* 0.108410:*:cli:context-execute: doom
+Error: unrecognized command 'Documents/'
+* 0.109240:*:cli:call: (doom) -> (:help --similar --postamble Documents/)
+* 0.109373:*:cli:context-parse: found command (:help)
+* 0.109768:*:cli:context-parse: found switch "--similar"
+* 0.110264:*:cli:context-parse: found switch "--postamble"
+* 0.110833:*:cli:context-parse: found arg "Documents/"
+* 0.110961:*:cli:context-execute: :help
+* 0.111476:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25995 17467 957842 105000) 26711 0 (101 . 32) nil nil doom nil (doom-cli-command-not-found-error doom Documents/) (:help) nil (Documents/) ((--postamble) (--envvars) (--similar) (--subcommands) (--synopsis --similar --postamble) (--commands) (--manpage) (--no-global) (-g) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t Documents/) (nil --similar --postamble Documents/))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_ Documents/) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+* 0.111557:*:cli:execute: (:help) ((context . #s(doom-cli-context (25995 17467 957842 105000) 26711 0 (101 . 32) nil nil doom nil (doom-cli-command-not-found-error doom Documents/) (:help) nil (Documents/) ((--postamble) (--envvars) (--similar) (--subcommands) (--synopsis --similar --postamble) (--commands) (--manpage) (--no-global) (-g) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t Documents/) (nil --similar --postamble Documents/))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (command Documents/) (sections --similar --postamble) (commands?) (manpage?) (localonly?))
+* 0.111695:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/run.el
+* 0.111759:*:cli:load: ~/.config/emacs/lisp/cli/run.el nil
+* 0.121410:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/make.el
+* 0.121498:*:cli:load: ~/.config/emacs/lisp/cli/make.el nil
+* 0.121942:*:cli:load: ~/.config/emacs/lisp/cli/make/completions nil
+* 0.127930:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/ci.el
+* 0.127994:*:cli:load: ~/.config/emacs/lisp/cli/ci.el nil
+* 0.138314:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/info.el
+* 0.138392:*:cli:load: ~/.config/emacs/lisp/cli/info.el nil
+* 0.139703:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/doctor.el
+* 0.139781:*:cli:load: ~/.config/emacs/lisp/cli/doctor.el nil
+* 0.143694:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/compile.el
+* 0.143756:*:cli:load: ~/.config/emacs/lisp/cli/compile.el nil
+* 0.148068:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/install.el
+* 0.148150:*:cli:load: ~/.config/emacs/lisp/cli/install.el nil
+* 0.148514:*:cli:load: ~/.config/emacs/lisp/cli/packages nil
+* 0.178189:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/env.el
+* 0.178281:*:cli:load: ~/.config/emacs/lisp/cli/env.el nil
+* 0.181006:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/upgrade.el
+* 0.181065:*:cli:load: ~/.config/emacs/lisp/cli/upgrade.el nil
+* 0.181501:*:cli:load: ~/.config/emacs/lisp/cli/packages nil
+* 0.192243:*:cli:load: ~/.config/emacs/lisp/cli/compile nil
+* 0.197942:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/profiles.el
+* 0.198009:*:cli:load: ~/.config/emacs/lisp/cli/profiles.el nil
+* 0.205131:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/sync.el
+* 0.205204:*:cli:load: ~/.config/emacs/lisp/cli/sync.el nil
+* 0.205436:*:cli:load: ~/.config/emacs/lisp/cli/packages nil
+
+Similar commands:
+  - (50%) doom doctor
+  - (48%) doom make codeowners
+  - (47%) doom version
+  - (46%) doom doc
+  - (43%) doom profiles sync
+  - (42%) doom sync
+  - (40%) doom env c
+  - (40%) doom ci lint-commits
+  - (40%) doom clean
+
+See 'doom h[elp]' or 'doom {-?,--help}' for documentation.
+* 0.230225:*:cli:Finished (GCs: 0, elapsed: 0.000000s)
+* 0.230225:*:cli:Finished (GCs: 0, elapsed: 0.000000s)

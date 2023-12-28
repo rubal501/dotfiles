@@ -1,0 +1,26 @@
+* 0.110002:*:cli:run!: doom info
+* 0.110158:*:cli:context-parse: found command (doom)
+* 0.110661:*:cli:load: autoload /home/roberto/.config/emacs/lisp/cli/info.el
+* 0.110730:*:cli:load: ~/.config/emacs/lisp/cli/info.el nil
+* 0.111979:*:cli:context-parse: found command (doom info)
+* 0.112477:*:cli:context-execute: doom info
+* 0.112989:*:cli:execute: (:before) ((input) (context . #s(doom-cli-context (25995 17912 970556 480000) 28244 0 (101 . 32) nil nil doom nil nil (doom info) nil (info) ((--json) (--lisp) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom info)) ((doom) info))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (_) (evals) (loads) (color?) (bench?) (profile) (pager) (emacsdir) (doomdir) (verbose?) (debug?) (force?))
+* 0.113081:*:cli:execute: (doom info) ((context . #s(doom-cli-context (25995 17912 970556 480000) 28244 0 (101 . 32) nil nil doom nil nil (doom info) nil (info) ((--json) (--lisp) (--eval) (-E) (--strict-load) (--load) (-L) (--color) (--benchmark) (--profile) (--pager) (--emacsdir) (--doomdir) (--verbose) (-v) (--debug) (-D) (--force) (-!)) ((t) ((doom info)) ((doom) info))  *doom-cli stdin*  *doom-cli stdout*  *doom-cli stderr* nil)) (format))
+generated  Dec 26, 2023 15:30:33
+system     "Arch Linux" Linux 6.6.7-arch1-1 x86_64
+emacs      29.1 ~/.config/emacs/
+doom       3.0.0-pre PROFILE=_@0 grafted, HEAD -> master, origin/master, origin/HEAD 03d692f
+	   2023-12-08 15:11:45 -0500 ~/.config/doom/
+shell      /usr/bin/fish
+features   ACL CAIRO DBUS FREETYPE GIF GLIB GMP GNUTLS GPM GSETTINGS HARFBUZZ JPEG JSON LCMS2 LIBOTF
+	   LIBSYSTEMD LIBXML2 M17N_FLT MODULES NOTIFY INOTIFY PDUMPER PNG RSVG SECCOMP SOUND SQLITE3
+	   THREADS TIFF TOOLKIT_SCROLL_BARS TREE_SITTER WEBP X11 XDBE XIM XINPUT2 XPM GTK3 ZLIB
+traits     batch server-running envvar-file
+modules    :config use-package :completion company vertico :ui doom doom-dashboard doom-quit (emoji
+	   +unicode) hl-todo modeline ophints (popup +defaults) tabs treemacs (vc-gutter +pretty)
+	   vi-tilde-fringe workspaces zen :editor (evil +everywhere) file-templates fold (format
+	   +onsave) snippets :emacs dired electric undo vc :term vterm :checkers syntax (spell
+	   +flyspell) :tools (eval +overlay) lookup magit :lang emacs-lisp julia (latex +latexmk
+	   +cdlatex) markdown org sh :config (default +bindings +smartparens)
+* 0.266785:*:cli:Finished (GCs: 0, elapsed: 0.000000s)
+* 0.266785:*:cli:Finished (GCs: 0, elapsed: 0.000000s)

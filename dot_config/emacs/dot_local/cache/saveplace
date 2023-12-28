@@ -1,0 +1,2 @@
+;;; -*- coding: utf-8; mode: lisp-data -*-
+(("/home/roberto/bin/" (dired-filename . "/home/roberto/bin/run_dedicated_servers")) ("/home/roberto/bin/run_dedicated_servers" . 52) ("/home/roberto/.config/" (dired-filename . "/home/roberto/.config/qtile")) ("/home/roberto/.config/qtile/" (dired-filename . "/home/roberto/.config/qtile/config.py")) ("/home/roberto/.config/qtile/config.py" . 9566) ("/home/roberto/.config/rofi/config.rasi" . 230) ("/home/roberto/.config/zathura/zathurarc" . 71))

@@ -1,0 +1,20 @@
+---
+@periodical{jcg,
+	Annotation = {This is a periodical entry with an issn field.},
+	Issn = {0097-8493},
+	Issuetitle = {Semantic {3D} media and content},
+	Number = 4,
+	Title = {Computers and Graphics},
+	Volume = 35,
+	Year = 2011}
+---
+- annote: This is a periodical entry with an issn field.
+  blt-type: periodical
+  container-title: Computers and graphics
+  id: jcg
+  ISSN: 0097-8493
+  issue: 4
+  issued: 2011
+  title: Semantic 3D media and content
+  type: article-journal
+  volume: 35

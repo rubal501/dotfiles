@@ -1,0 +1,29 @@
+---
+@Jurisdiction{bgh2013usedsoft-ii,
+  author       = {BGH},
+  type        = {Urteil},
+  number       = {I ZR 129/08},
+  eventdate    = {2013-07-17},
+  shortjournal = {GRUR},
+  journaltitle = {Gewerblicher Rechtsschutz und Urheberrecht},
+  year = {2014},
+  pages = {264-272},
+  title     = {UsedSoft II},
+  commentator = {Malte Stieper},
+  langid = {german}
+}
+---
+- author:
+  - family: BGH
+  blt-type: jurisdiction
+  container-title: Gewerblicher Rechtsschutz und Urheberrecht
+  container-title-short: GRUR
+  event-date: 2013-07-17
+  genre: Urteil
+  id: bgh2013usedsoft-ii
+  issued: 2014
+  language: de-DE
+  number: I ZR 129/08
+  page: 264-272
+  title: UsedSoft II
+  type: legal_case

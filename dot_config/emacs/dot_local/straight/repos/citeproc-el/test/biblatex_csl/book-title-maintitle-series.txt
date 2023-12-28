@@ -1,0 +1,29 @@
+---
+@book{item1,
+	Author = {Author, Al},
+	Date = {2013},
+	Location = {Location},
+	Mainsubtitle = {Mainsubtitle},
+	Maintitle = {Maintitle},
+	Maintitleaddon = {Maintitleaddon},
+	Number = {3},
+	Publisher = {Publisher},
+	Series = {Series},
+	Subtitle = {Subtitle},
+	Title = {Title of the book},
+	Titleaddon = {Titleaddon},
+}
+---
+- author:
+  - family: Author
+    given: Al
+  blt-type: book
+  collection-number: 3
+  collection-title: Series
+  id: item1
+  issued: 2013
+  publisher: Publisher
+  publisher-place: Location
+  title: "Maintitle: Mainsubtitle. Maintitleaddon"
+  type: book
+  volume-title: "Title of the book: Subtitle. Titleaddon"

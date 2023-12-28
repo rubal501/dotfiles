@@ -1,0 +1,21 @@
+---
+@article{article-req,
+    Author = {Author, Ann},
+    Date = {2013-01},
+    Urldate =  {2021-12-12T19:00:12},
+    Journaltitle = {The Journaltitle},
+    Title = {An article entry with just the required fields},
+    Langid = {english}}
+---
+- accessed: 2021-12-12
+  author:
+  - family: Author
+    given: Ann
+
+  blt-type: article
+  container-title: The journaltitle
+  id: article-req
+  issued: 2013-01
+  language: en-US
+  title: An article entry with just the required fields
+  type: article-journal

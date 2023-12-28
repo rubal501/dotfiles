@@ -1,0 +1,471 @@
+[[https://melpa.org/#/citar][file:https://melpa.org/packages/citar-badge.svg]]
+
+* Citar
+  :PROPERTIES:
+  :CUSTOM_ID: citar
+  :END:
+
+- [[#features][Features]]
+- [[#installation][Installation]]
+- [[#configuration][Configuration]]
+- [[#usage][Usage]]
+- [[#comparisons][Comparisons]]
+- [[#acknowledgements][Acknowledgements]]
+
+** Features
+   :PROPERTIES:
+   :CUSTOM_ID: features
+   :END:
+
+Citar provides a highly-configurable =completing-read= front-end to browse and act on BibTeX, BibLaTeX, and CSL JSON bibliographic data, and LaTeX, markdown, and org-cite editing support.
+
+- quick filtering and selection of bibliographic entries from the minibuffer, and various commands to run against them.
+- a small =citar-embark= companion package, that provides contextual actions in the minibuffer, and also at-point in org, markdown, and LaTeX buffers.
+- seamless caching of multiple global and local bibliographic sources
+- configurable APIs for:
+  - indicatars, that signal the presence of related resources in the minibuffer
+  - notes, to integrate with dedicated note packages, with external packages available for =org-roam=, =denote=, and =zk=
+  - major-mode adapters
+  - entry-opening, to go to the original entry data
+
+Here's a screenshot with [[https://github.com/minad/vertico][vertico]] and symbol customization [[https://github.com/bdarcus/citar#icons][noted below]].
+
+#+caption: vertico with citar
+[[file:images/vertico.png]]
+
+And here's =citar-capf= in a markdown buffer.
+
+#+caption: completion-at-point in a markdown buffer
+[[file:images/capf-md.png]]
+
+To see citar in action with org-cite, you can watch [[https://emacsconf.org/2021/talks/research/][this Emacs Conf 2021 presentation]] by [[https://github.com/rka97][Ahmed Khaled]].
+
+** Installation
+   :PROPERTIES:
+   :CUSTOM_ID: installation
+   :END:
+
+There are a variety of ways to install citar:
+
+- Doom Emacs :: The easiest way to install and configure citar and related packages is to use the [[https://github.com/hlissner/doom-emacs/tree/master/modules/tools/biblio][Doom Emacs biblio module]] with the ~vertico~ completion module.
+- MELPA :: citar is also available via [[https://melpa.org/#/citar][MELPA]].
+- GUIX :: provides the ~emacs-citar~ package.
+
+In addition, the following packages are strongly recommended for the best experience.
+
+1. [[https://github.com/minad/vertico][Vertico]] (completion interface)
+2. [[https://github.com/oantolin/orderless][Orderless]] (completion style)
+3. [[https://github.com/oantolin/embark][Embark]] (contextual actions)
+4. [[https://github.com/minad/marginalia][Marginalia]] (annotations, and also candidate classification for Embark)
+
+In particular, if you want to narrow your search using authors, titles, etc (i.e., not only citation keys), you need to use a completion style that is order independent; for example, [[https://github.com/oantolin/orderless][Orderless]] with ~completion-styles~ set to ~(orderless basic)~ (see [[https://github.com/oantolin/orderless#overview][example config]]).
+
+We also recommend Emacs 28 or newer. 
+
+** Configuration
+   :PROPERTIES:
+   :CUSTOM_ID: configuration
+   :END:
+
+*** Basic
+    :PROPERTIES:
+    :CUSTOM_ID: basic
+    :END:
+
+This is the minimal configuration, and will work with any completing-read compliant vertical completion UI, like Vertico, or the built-in icomplete-vertical, with actions available via =M-x= commands.
+
+#+begin_src emacs-lisp
+(use-package citar
+  :custom
+  (citar-bibliography '("~/bib/references.bib")))
+#+end_src
+
+*** =citar-capf=
+
+This package includes a ~completion-at-point~ function to complete citation keys in the buffer, which you can configure like so:
+
+#+begin_src emacs-lisp
+(use-package citar
+  :custom
+  (citar-bibliography '("~/bib/references.bib"))
+  :hook
+  (LaTeX-mode . citar-capf-setup)
+  (org-mode . citar-capf-setup))
+#+end_src
+
+*** Embark
+
+The =citar-embark= package adds contextual access actions in the minibuffer and at-point via the ~citar-embark-mode~ minor mode.
+
+When using Embark, the Citar actions are generic, and work the same across org, markdown, and latex modes.
+
+#+begin_src emacs-lisp
+(use-package citar-embark
+  :after citar embark
+  :no-require
+  :config (citar-embark-mode))
+#+end_src
+
+*** Org-Cite
+
+This shows the buffer actions made available by =citar-embark=:
+
+#+CAPTION: org-cite at-point integration with =embark-act=
+[[file:images/org-cite-embark-point.png]]
+
+If you want to use Citar only in Org-Mode, this is the best option.
+
+#+begin_src emacs-lisp
+(use-package citar
+  :no-require
+  :custom
+  (org-cite-global-bibliography '("~/bib/references.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography)
+  ;; optional: org-cite-insert is also bound to C-c C-x C-@
+  :bind
+  (:map org-mode-map :package org ("C-c b" . #'org-cite-insert)))
+#+end_src
+
+You can insert citations with the =org-cite-insert= command, which is bound to =C-c C-x C-@= in Org-Mode buffers.  The
+optional ~:bind~ command above also gives it the shorter =C-c b= binding.
+
+If you prefer to have the Embark menu open with =org-open-at-point=, you should set this variable.
+
+#+begin_src emacs-lisp
+(setq citar-at-point-function 'embark-act)
+#+end_src
+
+You can invoke both =embark-act= and =embark-dwim=, however, independently of =org-at-point=, and in other modes such as =latex-mode=.
+
+*** Major-mode adapters
+:PROPERTIES:
+:CUSTOM_ID: major-mode-adapters
+:END:
+
+Citar includes an adapter framework to enable major-mode specific editing integration.
+Such adapters can provide the following capabilities, which one can configure with the ~citar-major-mode-functions~ alist:
+
+1. ~insert-keys~: to insert citation keys (this may go away though)
+2. ~insert-citation~: to insert citations
+3. ~insert-edit~: to insert citations or edit at point
+4. ~local-bib-files~: to find bibliographic files associated with a buffer
+5. ~key-at-point~: returns the citation key at point
+6. ~citation-at-point~: returns the list of keys in the citation at point
+
+Citar currently includes the following such adapters:
+
+1. ~citar-org~: by default, only supports ~org-cite~, but can one can configure for other formats
+2. ~citar-latex~: configurable bibtex, natbib and biblatex support (requires AUCTeX)
+3. ~citar-markdown~: by default, only supports the ~pandoc~ citation syntax
+
+None of these should require any configuration, and should load as needed.
+
+*** Opening reference entries
+
+The =citar-open-entry= command will open the source data entry.
+You may configure this using ~citar-open-entry-function~.
+By default, this uses ~citar-open-entry-in-file~, which will open the relevant bibliographic file and move point to the entry.
+The other included option is ~citar-open-entry-in-zotero~, which will select the item in Zotero.
+Note that functionality depends on [[https://retorque.re/zotero-better-bibtex/][Better BibTeX]] (which you should be using anyway!).
+
+** Rich UI
+:PROPERTIES:
+:CUSTOM_ID: rich-ui
+:END:
+
+There are three sections of the browsing UI.
+
+1. The prefix, exploiting the affixation feature only available starting with Emacs 28, and holding the symbols to indicate the presence of PDFs or notes associated with the entries.
+2. The main display, which by default shows author, title, and date.
+3. The suffix, which by default shows citekey, reference type, and (if present) tags or keywords.
+
+You can search against all of the above content.
+For the prefix, you can filter for associated files or notes using =has:file= or =has:notes= respectively (and at least with ~orderless~, even the =:p= or =:n= shorthand).
+
+#+CAPTION: UI sections
+[[file:images/ui-segments.png]]
+
+*** Templates
+
+The =citar-templates= variable configures formatting for these sections, as well as the default note function.
+Here's the default value:
+
+#+begin_src emacs-lisp
+(setq citar-templates
+      '((main . "${author editor:30%sn}     ${date year issued:4}     ${title:48}")
+        (suffix . "          ${=key= id:15}    ${=type=:12}    ${tags keywords:*}")
+        (preview . "${author editor:%etal} (${year issued date}) ${title}, ${journal journaltitle publisher container-title collection-title}.\n")
+        (note . "Notes on ${author editor:%etal}, ${title}")))
+#+end_src
+
+Note:
+
+1. You may include multiple variables in a field; the formatter will print the first one it finds.
+2. If you plan to use CSL JSON at all, you can and should include CSL JSON variables names where appropriate as such options. 
+   The default main template dates field demonstrates this.
+3. The asterisk signals to the formatter to use available space for the column.
+4. The note template does not take widths, as formatting is inline there rather than columnar.
+5. The ~%~ character preceeds a token defined as a key in ~citar-display-transform-functions~, whose value is a list of functions and optional arguments.
+   Note that if you include this, if you also include a width specification, it must come after the width.
+
+*** Indicators
+
+The UI includes configurable indicators.
+By default, it includes plain text indicators for, each of which indicates the presence of different resources related to the reference:
+
+- notes
+- library files
+- links
+- cited (for references cited in the current buffer)
+
+For other indicators, see the [[https://github.com/emacs-citar/citar/wiki/Indicators][wiki]].
+
+Here's a screenshot using this configuration, which removes the links indicator, and mixes plain text and an icon indicator using ~all-the-icons~.
+
+#+begin_src emacs-lisp
+(setq citar-indicators
+  (list citar-indicator-files ; plain text
+        citar-indicator-notes-icons)) ; icon
+#+end_src
+
+#+caption: UI with customized indicators.
+#+name: fig-indicators
+[[images/indicators.png]]
+
+You can create your own indicators, of course.
+Here's an example indicator definition incorporating icons:
+
+#+begin_src emacs-lisp
+(defvar citar-indicator-notes-icons
+  (citar-indicator-create
+   :symbol (all-the-icons-material
+            "speaker_notes"
+            :face 'all-the-icons-blue
+            :v-adjust -0.3)
+   :function #'citar-has-notes
+   :padding "  "
+   :tag "has:notes"))
+#+end_src
+
+Keep in mind, however, the included predicate functions must be performance-optimized, since the completion UI runs them on your entire library every time you open it.
+
+** Test Script
+    :PROPERTIES:
+    :CUSTOM_ID: test-script
+    :END:
+
+The repository =test= directory also includes a script you can use to run this and associated packages in the =emacs -Q= sandbox.
+To do that, simply run =./run.sh= from the =test= directory.
+
+** History and predefined searches
+    :PROPERTIES:
+    :CUSTOM_ID: history-and-predefined-searches
+    :END:
+
+=citar= has functionality similar to the [[https://github.com/tmalsburg/helm-bibtex#p][predefined search]] functionality in =helm-bibtex= and =ivy-bibtex=, but with a different implementation.
+Rather than create a new command with the search terms as argument, you just set the =citar-presets= variable, and add the strings you want to access:
+
+#+begin_src emacs-lisp
+(setq citar-presets '("one search string" "another search string"))
+#+end_src
+
+You then have two ways to access these strings from the completion prompt:
+
+1. by using =M-n= from the prompt, which will cycle through the strings
+2. by calling =citar-insert-preset= with a keybinding, and then selecting the string
+
+=citar= also preserves the history of your selections (see caveat below about multiple candidate selection though), which are also accessible in your completion UI, but by using =M-p=.
+You can save this history across sessions by adding =citar-history= to =savehist-additional-variables=.
+
+** Refreshing the library display
+    :PROPERTIES:
+    :CUSTOM_ID: refreshing-the-library-display
+    :END:
+
+Citar uses a cache to speed up library display.
+If a bib file changes, the cache will automatically update the next time you run a Citar command.
+
+Note that cached data preformatted completion candidates are independently tracked by file.
+So, for example, if you have one very large bibliography file that changes a lot, you might consider splitting into one large file that is more stable, and one-or-more smaller ones that change more frequently.
+
+** Notes
+
+Citar offers configurable note-taking and access integration.
+The ~citar-notes-sources~ variable configures note backends, and ~citar-notes-source~ activates your chosen backend.
+
+A backend primarily specifies functions to update the Citar display, to create the completion candidates, and to open existing and new notes.
+See the ~citar-notes-sources~ docstring for details, and the =citar-register-notes-source= and =citar-remove-notes-source= convenience functions.
+
+** Files, file association and file-field parsing
+
+If you have ~citar-library-paths~ set, the relevant open commands will look in those directories for file names of =CITEKEY.EXTENSION=.
+They will also parse contents of a file-field.
+The ~citar-file-parser-functions~ variable governs which parsers to use, and there are two included parsers:
+
+1. The default =citar-file-parser-default= parser works for simple colon or semi-colon-delimited lists of file paths, as in Zotero.
+2. The =citar-file-parser-triplet= works for Mendeley and Calibre, which represent files using a format like =:/path/file.pdf:PDF=.
+
+If you have a mix of entries created with Zotero and Calibre, you can set it like so and it will parse both:
+
+#+begin_src emacs-lisp
+(setq citar-file-parser-functions
+  '(citar-file-parser-default
+    citar-file-parser-triplet))
+#+end_src
+
+The ~citar-library-file-extensions~ variable governs which file extensions the open commands will recognize; when `nil`, it will recognize all extensions.
+The ~citar-file-additional-files-separator~ variable defines what patterns citar should identify for multiple library files for the same reference key.
+Here's an example to only recognize pdf and jpg extensions, but additional file names of the form ~test-1.jpg~:
+
+#+begin_src emacs-lisp
+(setq citar-library-file-extensions (list "pdf" "jpg")
+      citar-file-additional-files-separator "-")
+#+end_src
+
+To change how citar opens files with given extensions, customize the ~citar-file-open-functions~ variable defined in =citar-file.el=.
+
+When used with embark and consult, you will have a range of alternate actions available for the candidates.
+
+#+CAPTION: File candidates with embark options
+[[file:images/file-browser-embark.png]]
+
+*** BibTeX Crossref File Support
+
+For BibTeX entries that have a 'crossref' field, Citar will associate the entry's key with the resources (files, notes, links) that are associated with the cross-referenced entry.
+
+For example: consider an entry for "Baym1965" that has a 'crossref' field "Meyers1999". When citar-open is called and "Baym1965" is selected, the minibuffer will list all files, notes, and links associated with both "Baym1965" and "Meyers1999". The proper prefixes, denoting an associated file, note, or link, will also be listed with each candidate in the minibuffer.
+
+NOTE: For the BibTeX crossref feature to work properly, the entry with the 'crossref' field must come *before* the cross-referenced entry in the bib file. (This is a requirement of BibTeX, not of Citar specifically.) In the example above, then, the entry for "Baym1965" must come before the entry for "Meyers1999".
+
+** Usage
+   :PROPERTIES:
+   :CUSTOM_ID: usage
+   :END:
+
+You have a few different ways to use citar.
+
+*** Org-cite
+
+Citar includes an org-cite =citar= processor, with "insert," "activate" and "follow" capabilities.
+When speaking about org-cite, *citations* refer to a set of one or more *references (citation-references)*, each of which may have text that precedes it (prefix) and text that proceeds it (suffix).
+To learn more about org-cite, visit the [[https://orgmode.org/manual/Citations.html][Citations page in the Org Manual]].
+
+The "insert processor" uses =citar-select-refs= to browse your library to insert and edit citations and citation references using the =org-cite-insert= command.
+The command is context-aware, so *its behavior depends on the point's location in a citation*.
+For example, if point:
+
+- precedes the colon, you are on the /citation prefix/ and will be prompted to edit the style
+- is on an existing citation-reference, you will be prompted to replace it
+- follows or precedes a citation-reference, you will be prompted to add a new citation-reference
+
+The "activate processor" runs the list of functions in ~citar-org-activation-functions~, which by default is the ~basic~ processor from ~oc-basic~ to provide fontification, and also a little function that adds a keymap (~citar-org-citation-map~) for editing citations at point.
+The ~citar-org-citation-map~ keymap includes the following bindings that provide additional citation and citation-reference editing options.
+
+| key         | binding                         | description                                         |
+|-------------+---------------------------------+-----------------------------------------------------|
+| C-c C-x DEL | citar-org-delete-citation       | delete citation or citation-reference at point      |
+| C-c C-x k   | citar-org-kill-citation         | kill citation or citation-reference at point        |
+| S-<left>    | citar-org-shift-reference-left  | move citation-reference at point left               |
+| S-<right>   | citar-org-shift-reference-right | move citation-reference at point right              |
+| M-p         | citar-org-update-prefix-suffix  | update prefix and suffix of reference at point, or, |
+|             |                                 | when called with prefix arg, update all             |
+|             |                                 | citation-references in citation at point            |
+| <mouse-1>   | citar-dwim                      | call the value of =citar-at-point-function= at point  |
+| <mouse-3>   | embark-act                      | call =embark-act= at point                            |
+
+
+The "follow processor" provides at-point functionality accessible via the =org-open-at-point= command.
+By default, in org-mode with org-cite support, when point is on a citation or citation-reference, and you invoke =org-open-at-point=, it will run the command set in =citar-at-point-function=, which is =citar-open= by default.
+Changing the value of =citar-at-point-function= to =embark-act= with embark installed and configured will provide access to the standard citar commands at point.
+
+Org-cite citations include optional "styles" and "variants" to locally modify the citation rendering.
+When inserting a new citation, calling =org-cite-insert= with a prefix arg will prompt to select a style.
+To edit an existing citation's style, just make sure *point is on the citation prefix* before running =org-cite-insert=, and you will get a list of available styles.
+That list is based on your configuration; if you have the =oc-natbib= and =oc-csl= processors configured, for example, the list will include the styles and variants available in those two processors.
+The variants included in the bundled processors include the following, with the shortcuts in parentheses:
+
+- =bare= (=b=): without surrounding punctuation
+- =caps= (=c=): force initial capitalization
+- =full= (=f=): ignore et al shortening for author names
+
+Generally, you shouldn't need these, but they can be useful in certain circumstances.
+If an export processor doesn't support a specific variant for a specific style, it should just fallback to the base style.
+For example, if you specify =text/f=, and the export processor you use doesn't support the =f= variant there, it should just output as if you specified =text=.
+
+#+CAPTION: citation styles
+[[file:images/oc-styles.png]]
+
+*** =M-x=
+    :PROPERTIES:
+    :CUSTOM_ID: m-x
+    :END:
+
+Simply do =M-x= and select the command that you want, enter the terms to find the item you are looking for, and hit return.
+This runs the default action: the command you invoked.
+
+*** Access an alternate action via =embark-act=
+    :PROPERTIES:
+    :CUSTOM_ID: access-an-alternate-action-via-embark-act
+    :END:
+
+If while browsing you instead would rather edit that record, and you have embark installed and configured, this is where =embark-act= comes in.
+Simply input the keybinding for =embark-act= (in my case =C-o=), and select the alternate action.
+
+*** Use =embark-collect-snapshot=
+    :PROPERTIES:
+    :CUSTOM_ID: use-embark-collect-snapshot
+    :END:
+
+A final option, that can be useful: run =embark-collect-snapshot= (=S=) from =embark-act=.
+This will select the candidate subset, and open it in a separate buffer.
+From there, you can run the same options discussed above using =embark-act= (which is also bound to =a= in the collect buffer).
+
+So, for example, say you are working on a paper. You hold the complete super-set of items you are interested in citing at some point in that buffer.
+From there, you can run different actions on the candidates at will, rather than search individually for each item you want to cite.
+
+*** Use =citar-dwim=
+    :PROPERTIES:
+    :CUSTOM_ID: use-citar-dwim
+    :END:
+
+=M-x citar-dwim= will run the default action on citation keys found at point directly.
+If you have =embark= installed, you use can =embark-dwim= instead for the same behavior, and =embark-act= for additional actions at-point.
+
+If no citation key is found, the minibuffer will open for selection.
+You can disable this behavior by setting =citar-at-point-fallback= to nil.
+
+** Related Packages
+
+The following packages extend or otherwise enhance citar.
+
+*** Notes Sources
+
+These small packages provide citar notes sources, and so tighter integration with the respective notes management packages.
+
+- [[https://github.com/emacs-citar/citar-org-roam][citar-org-roam]]
+- [[https://github.com/pprevos/citar-denote][citar-denote]]
+- [[https://github.com/localauthor/zk][zk-citar]]
+
+** Comparisons
+   :PROPERTIES:
+   :CUSTOM_ID: comparisons
+   :END:
+
+To understand how citar compares to other packages like =org-ref=, =ivy-bibtex= and =helm-bibtex= (and the related =bibtex-completion=), see the [[https://github.com/emacs-citar/citar/wiki/Comparisons][comparisons]] page on the wiki.
+
+** Acknowledgements
+   :PROPERTIES:
+   :CUSTOM_ID: acknowledgements
+   :END:
+
+The ideas in this project were initially worked out in a [[https://github.com/tmalsburg/helm-bibtex/issues/353][conversation]] with [[https://github.com/mtreca][Maxime Tréca]] and [[https://github.com/minad][Daniel Mendler]].
+Daniel, author of [[https://github.com/minad/consult][consult]] and [[https://github.com/minad/marginalia][marginalia]], helped us understand the possibilities of the new suite of completing-read packages, while Maxime came up with an [[https://github.com/tmalsburg/helm-bibtex/pull/355][initial prototype]].
+
+This code takes those ideas and re-implements them to fill out the feature set, and also optimize the code clarity and performance.
+
+# Local Variables:
+# org-edit-src-content-indentation: 0
+# End:

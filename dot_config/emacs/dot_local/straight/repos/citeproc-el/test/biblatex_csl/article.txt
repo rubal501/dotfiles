@@ -1,0 +1,92 @@
+---
+@article{article-req,
+    Author = {Author, Ann},
+    Date = {2013-01-01},
+    Journaltitle = {The Journaltitle},
+    Title = {An article entry with just the required fields},
+    Langid = {english}},
+
+@article{article-opt,
+    Addendum = {The Addendum},
+    Annotator = {Annotator, A.},
+    Author = {Author, Jr., Ann A.},
+    Commentator = {Commentator, C.},
+    Date = {2013-01-01},
+    Doi = {10.1086/520976},
+    Editor = {Editor, Edward},
+    Editora = {Editor, A.},
+    Editorb = {Editor, B.},
+    Editorc = {Editor, C.},
+    Eid = {eid},
+    Eprint = {eprint},
+    Eprintclass = {eprintclass},
+    Eprinttype = {eprinttype},
+    Issn = {issn},
+    Issue = {issue},
+    Issuesubtitle = {The Issuesubtitle},
+    Issuetitle = {The Issuetitle},
+    Journalsubtitle = {The Journalsubtitle},
+    Journaltitle = {The Journaltitle},
+    Journal = {The Journal},
+    Language = {language},
+    Month = {01},
+    Year = {2013},
+    Note = {The Note},
+    Number = {number},
+    Origlanguage = {origlanguage},
+    Pages = {pages},
+    Pubstate = {in press},
+    Series = {new series},
+    Subtitle = {The subtitle},
+    Title = {An article entry with the required and all optional fields},
+    Titleaddon = {The titleaddon},
+    Translator = {Translator, Ted},
+    Url = {http://foo.bar.baz/},
+    Urldate = {2013-01-01},
+    Version = {version},
+    Volume = {volume},
+    Langid = {english}
+}
+---
+- author:
+  - family: Author
+    given: Ann
+  blt-type: article
+  container-title: The journaltitle
+  id: article-req
+  issued: 2013-01-01
+  language: en-US
+  title: An article entry with just the required fields
+  type: article-journal
+- accessed: 2013-01-01
+  author:
+  - family: Author
+    given: Ann A.
+    suffix: Jr.
+  blt-type: article
+  collection-title: New series
+  container-title: "The journaltitle: The journalsubtitle"
+  DOI: 10.1086/520976
+  editor:
+  - family: Editor
+    given: Edward
+  blt-type: article
+  id: article-opt
+  ISSN: issn
+  issue: number, issue
+  issued: 2013-01-01
+  language: en-US
+  note: The Note. The Addendum
+  page: pages
+  status: in press
+  title: "An article entry with the required and all optional fields:
+    The subtitle. The titleaddon"
+  title-short: An article entry with the required and all optional
+    fields
+  translator:
+  - family: Translator
+    given: Ted
+  type: article-journal
+  URL: "http://foo.bar.baz/"
+  version: version
+  volume: volume
